@@ -23,7 +23,7 @@ const useStyles = makeStyles(theme => ({
   },
   chips: {
     display: 'flex',
-    justifyContent: 'center',
+    justifyContent: 'flex-start',
     flexWrap: 'wrap',
     listStyle: 'none',
     padding: theme.spacing(0.5),
@@ -85,7 +85,7 @@ export default function ProjectCard({ name, logo, banner, year, skills, github, 
         </Typography>
         <div className={classes.chips}>
           {skills.split(',').map(skill => (
-            <Chip className={classes.chip} label={skill} />
+            <Chip className={classes.chip} label={skill} size='small' />
           ))}
         </div>
       </CardContent>
