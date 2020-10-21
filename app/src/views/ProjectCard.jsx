@@ -21,6 +21,14 @@ const useStyles = makeStyles(theme => ({
   root: {
     maxWidth: 345,
   },
+  chips: {
+    display: 'flex',
+    justifyContent: 'center',
+    flexWrap: 'wrap',
+    listStyle: 'none',
+    padding: theme.spacing(0.5),
+    margin: 0,
+  },
   media: {
     height: 0,
     paddingTop: '56.25%', // 16:9
@@ -38,11 +46,15 @@ const useStyles = makeStyles(theme => ({
   avatar: {
     backgroundColor: red[500],
   },
+  chip: {
+    margin: theme.spacing(0.5),
+  },
 }));
 
 export default function ProjectCard({ name, logo, banner, year, skills, github, location }) {
   const classes = useStyles();
   const [expanded, setExpanded] = React.useState(false);
+  console.log(skills);
 
   const handleExpandClick = () => {
     setExpanded(!expanded);
@@ -71,6 +83,11 @@ export default function ProjectCard({ name, logo, banner, year, skills, github, 
           This impressive paella is a perfect party dish and a fun meal to cook together with your guests. Add 1 cup of
           frozen peas along with the mussels, if you like.
         </Typography>
+        <div className={classes.chips}>
+          {skills.split(',').map(skill => (
+            <Chip className={classes.chip} label={skill} />
+          ))}
+        </div>
       </CardContent>
       <CardActions disableSpacing>
         <IconButton aria-label='add to favorites'>
