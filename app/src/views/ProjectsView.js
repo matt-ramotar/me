@@ -1,9 +1,26 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+
+import { Grid, CardHeader } from '@material-ui/core';
+import { makeStyles } from '@material-ui/core/styles';
+
 import { getProjects } from '../store/projects';
 import ProjectCard from './ProjectCard';
 
+const useStyles = makeStyles(theme => ({
+  root: {
+    flexGrow: 1,
+  },
+  paper: {
+    padding: theme.spacing(1),
+    textAlign: 'center',
+    color: theme.palette.text.secondary,
+  },
+}));
+
 export function ProjectsView({ getProjectsDispatcher, projects }) {
+  const classes = useStyles();
+
   useEffect(() => async => {
     getProjectsDispatcher();
   });
@@ -11,13 +28,9 @@ export function ProjectsView({ getProjectsDispatcher, projects }) {
   if (!projects) return null;
 
   return (
-    <ul>
+    <Grid container spacing={6}>
       {projects.map(project => (
-        <div>
-          <h1>{project.project}</h1>
-          <h2>{project.year}</h2>
-          <h2>{project.location}</h2>
-          <h2>{project.github}</h2>
+        <Grid item xs={4}>
           <ProjectCard
             name={project.project}
             year={project.year}
@@ -27,21 +40,9 @@ export function ProjectsView({ getProjectsDispatcher, projects }) {
             logo={project.logo}
             banner={project.banner}
           />
-          <div>
-            {project['skills-img'].split(',').map(src => {
-              return <img src={src} height='28px' width='28px' />;
-            })}
-          </div>
-          <li>
-            {project.skills.split(',').map(skill => (
-              <div>
-                <code>{skill}</code>
-              </div>
-            ))}
-          </li>
-        </div>
+        </Grid>
       ))}
-    </ul>
+    </Grid>
   );
 }
 

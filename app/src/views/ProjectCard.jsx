@@ -20,7 +20,7 @@ import GitHubIcon from '@material-ui/icons/GitHub';
 
 const useStyles = makeStyles(theme => ({
   root: {
-    maxWidth: 345,
+    maxWidth: 600,
   },
   chips: {
     display: 'flex',
