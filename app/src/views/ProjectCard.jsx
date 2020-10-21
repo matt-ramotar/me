@@ -50,6 +50,9 @@ const useStyles = makeStyles(theme => ({
   chip: {
     margin: theme.spacing(0.5),
   },
+  language: {
+    backgroundColor: 'blue',
+  },
 }));
 
 export default function ProjectCard({ name, logo, banner, year, skills, github, location }) {
@@ -85,9 +88,17 @@ export default function ProjectCard({ name, logo, banner, year, skills, github, 
           frozen peas along with the mussels, if you like.
         </Typography>
         <div className={classes.chips}>
-          {skills.split(',').map(skill => (
-            <Chip className={classes.chip} label={skill} size='small' />
-          ))}
+          {skills
+            .split(',')
+            .map(skill =>
+              ['JavaScript', 'Python', 'R', 'SQL'].includes(skill) ? (
+                <Chip className={classes.chip} label={skill} size='small' color='primary' />
+              ) : ['PostgreSQL', 'MongoDB'].includes(skill) ? (
+                <Chip className={classes.chip} label={skill} size='small' color='secondary' />
+              ) : (
+                <Chip className={classes.chip} label={skill} size='small' />
+              )
+            )}
         </div>
       </CardContent>
       <CardActions disableSpacing>
