@@ -18,15 +18,7 @@ function App() {
   const classes = useStyles();
   const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)');
 
-  const theme = React.useMemo(
-    () =>
-      createMuiTheme({
-        palette: {
-          type: prefersDarkMode ? 'dark' : 'light',
-        },
-      }),
-    [prefersDarkMode]
-  );
+  const theme = React.useMemo(() => createMuiTheme());
   return (
     <>
       <ThemeProvider theme={theme}>
