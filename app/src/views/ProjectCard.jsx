@@ -76,7 +76,7 @@ export default function ProjectCard({ name, logo, banner, year, skills, github, 
           </IconButton>
         }
         title={name}
-        subheader={year}
+        subheader={`📍${location} 📅${year}`}
       />
       <CardMedia className={classes.media} image={banner} title='Paella dish' />
       <CardContent>
