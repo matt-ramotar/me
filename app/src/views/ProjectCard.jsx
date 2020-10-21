@@ -16,6 +16,7 @@ import FavoriteIcon from '@material-ui/icons/Favorite';
 import ShareIcon from '@material-ui/icons/Share';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
+import GitHubIcon from '@material-ui/icons/GitHub';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -90,6 +91,9 @@ export default function ProjectCard({ name, logo, banner, year, skills, github, 
         </div>
       </CardContent>
       <CardActions disableSpacing>
+        <IconButton href={github}>
+          <GitHubIcon />
+        </IconButton>
         <IconButton aria-label='add to favorites'>
           <FavoriteIcon />
         </IconButton>
