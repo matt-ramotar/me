@@ -27,9 +27,10 @@ const useStyles = makeStyles(theme => ({
     justifyContent: 'flex-start',
     flexWrap: 'wrap',
     listStyle: 'none',
-    padding: theme.spacing(0.5),
-    margin: 0,
+    padding: theme.spacing(1),
+    margin: 1,
   },
+
   media: {
     height: 0,
     paddingTop: '56.25%', // 16:9
@@ -49,9 +50,33 @@ const useStyles = makeStyles(theme => ({
   },
   chip: {
     margin: theme.spacing(0.5),
+    backgroundColor: '#282D33',
+    color: 'white',
   },
   language: {
-    backgroundColor: 'blue',
+    backgroundColor: '#EA8893',
+    margin: theme.spacing(0.5),
+  },
+  health: {
+    backgroundColor: '#7AB5F2',
+    margin: theme.spacing(0.5),
+  },
+  db: {
+    backgroundColor: '#FAC862',
+    margin: theme.spacing(0.5),
+  },
+  econ: {
+    backgroundColor: '#C5A5C5',
+    margin: theme.spacing(0.5),
+  },
+  jsFramework: {
+    backgroundColor: '#8DC891',
+    margin: theme.spacing(0.5),
+  },
+
+  pythonFramework: {
+    backgroundColor: '#89C5BE',
+    margin: theme.spacing(0.5),
   },
 }));
 
@@ -63,6 +88,10 @@ export default function ProjectCard({ name, logo, banner, year, skills, github, 
   const handleExpandClick = () => {
     setExpanded(!expanded);
     console.log(name, logo, banner, year, skills, github, location);
+  };
+
+  const handleChipClick = e => {
+    console.log(e.target.innerText);
   };
 
   return (
@@ -83,7 +112,7 @@ export default function ProjectCard({ name, logo, banner, year, skills, github, 
       />
       <CardMedia className={classes.media} image={banner} title='Paella dish' />
       <CardContent>
-        <Typography variant='body2' color='textSecondary' component='p'>
+        <Typography variant='body2' className={classes.contentText}>
           This impressive paella is a perfect party dish and a fun meal to cook together with your guests. Add 1 cup of
           frozen peas along with the mussels, if you like.
         </Typography>
@@ -92,11 +121,40 @@ export default function ProjectCard({ name, logo, banner, year, skills, github, 
             .split(',')
             .map(skill =>
               ['JavaScript', 'Python', 'R', 'SQL'].includes(skill) ? (
-                <Chip className={classes.chip} label={skill} size='small' color='primary' />
+                <Chip
+                  className={(classes.chip, classes.language)}
+                  label={skill}
+                  size='small'
+                  onClick={handleChipClick}
+                />
               ) : ['PostgreSQL', 'MongoDB'].includes(skill) ? (
-                <Chip className={classes.chip} label={skill} size='small' color='secondary' />
+                <Chip
+                  className={(classes.chip, classes.db)}
+                  label={skill}
+                  size='small'
+                  color='secondary'
+                  onClick={handleChipClick}
+                />
+              ) : ['quality improvement', 'patient safety', 'clinical trials'].includes(skill) ? (
+                <Chip className={(classes.chip, classes.health)} label={skill} size='small' onClick={handleChipClick} />
+              ) : ['epidemiology', 'econometrics'].includes(skill) ? (
+                <Chip className={(classes.chip, classes.econ)} label={skill} size='small' onClick={handleChipClick} />
+              ) : ['Flask', 'SQLAlchemy'].includes(skill) ? (
+                <Chip
+                  className={(classes.chip, classes.pythonFramework)}
+                  label={skill}
+                  size='small'
+                  onClick={handleChipClick}
+                />
+              ) : ['Redux', 'React', 'Express', 'Node', 'Sequelize'].includes(skill) ? (
+                <Chip
+                  className={(classes.chip, classes.jsFramework)}
+                  label={skill}
+                  size='small'
+                  onClick={handleChipClick}
+                />
               ) : (
-                <Chip className={classes.chip} label={skill} size='small' />
+                <Chip className={classes.chip} label={skill} size='small' onClick={handleChipClick} />
               )
             )}
         </div>
@@ -122,7 +180,7 @@ export default function ProjectCard({ name, logo, banner, year, skills, github, 
         </IconButton>
       </CardActions>
       <Collapse in={expanded} timeout='auto' unmountOnExit>
-        <CardContent>
+        <CardContent className={classes.content}>
           <Typography paragraph>Method:</Typography>
           <Typography paragraph>
             Heat 1/2 cup of the broth in a pot until simmering, add saffron and set aside for 10 minutes.
