@@ -28,21 +28,24 @@ export function ProjectsView({ getProjectsDispatcher, projects }) {
   if (!projects) return null;
 
   return (
-    <Grid container spacing={6}>
-      {projects.map(project => (
-        <Grid item xs={4}>
-          <ProjectCard
-            name={project.project}
-            year={project.year}
-            location={project.location}
-            github={project.github}
-            skills={project.skills}
-            logo={project.logo}
-            banner={project.banner}
-          />
-        </Grid>
-      ))}
-    </Grid>
+    <>
+      <h1 id='projects'>Projects</h1>
+      <Grid container spacing={6}>
+        {projects.map(project => (
+          <Grid item xs={4}>
+            <ProjectCard
+              name={project.project}
+              year={project.year}
+              location={project.location}
+              github={project.github}
+              skills={project.skills}
+              logo={project.logo}
+              banner={project.banner}
+            />
+          </Grid>
+        ))}
+      </Grid>
+    </>
   );
 }
 

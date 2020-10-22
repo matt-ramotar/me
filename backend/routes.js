@@ -42,9 +42,9 @@ router.get('/skills', async (req, res) => {
   const doc = await coda.getDoc(docId);
   const skillsTable = await doc.getTable(tableIds.skills);
   const skillsRows = await skillsTable.listRows({ useColumnNames: true });
-  const skills = [];
+  const skills = {};
   for (const skillRow of skillsRows) {
-    skills.push(skillRow);
+    skills[skillRow.values.skill] = skillRow.values;
   }
   return res.json(skills);
 });
@@ -73,6 +73,28 @@ router.get('/skills/tech', async (req, res) => {
     }
   }
   return res.json(skills.sort());
+});
+
+router.get('/links', async (req, res) => {
+  const doc = await coda.getDoc(docId);
+  const linksTable = await doc.getTable(tableIds.links);
+  const linksRows = await linksTable.listRows({ useColumnNames: true });
+  const links = [];
+  for (const linkRow of linksRows) {
+    links.push(linkRow.values);
+  }
+  return res.json(links);
+});
+
+router.get('/contact', async (req, res) => {
+  const doc = await coda.getDoc(docId);
+  const contactTable = await doc.getTable(tableIds.contact);
+  const contactDetails = await contactTable.listRows({ useColumnNames: true });
+  const contact = {};
+  for (const contactDetail of contactDetails) {
+    contact[contactDetail.values.key] = contactDetail.values.value;
+  }
+  return res.json(contact);
 });
 
 module.exports = router;

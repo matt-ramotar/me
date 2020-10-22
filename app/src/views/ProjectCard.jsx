@@ -66,11 +66,11 @@ export default function ProjectCard({ name, logo, banner, year, skills, github, 
   };
 
   return (
-    <Card className={classes.root}>
+    <Card className={classes.root} id={`card-${name}`}>
       <CardHeader
         avatar={
-          <Avatar aria-label='recipe' className={classes.avatar}>
-            R
+          <Avatar aria-label={name} className={classes.avatar}>
+            {name.split('')[0].toLowerCase()}
           </Avatar>
         }
         action={

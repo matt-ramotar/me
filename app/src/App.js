@@ -1,5 +1,8 @@
 import React from 'react';
 import { BrowserRouter, NavLink } from 'react-router-dom';
+import NavBar from './components/NavBar';
+import Footer from './components/Footer';
+
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
 import { CssBaseline } from '@material-ui/core';
@@ -24,11 +27,9 @@ function App() {
       <ThemeProvider theme={theme}>
         <CssBaseline />
         <BrowserRouter>
-          <NavLink to='/'>Me</NavLink>
-          <NavLink to='/about'>About</NavLink>
-          <NavLink to='/contact'>Contact</NavLink>
-          <NavLink to='/projects'>Projects</NavLink>
+          <NavBar />
           <Views />
+          <Footer />
         </BrowserRouter>
       </ThemeProvider>
     </>
