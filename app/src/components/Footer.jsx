@@ -9,10 +9,10 @@ export default function Footer() {
     <Box style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column' }}>
       <Box style={{ display: 'flex' }}>
         <SocialProvider>
-          <SocialLink brand={'Envelope'} />
-          <SocialLink brand={'GithubCircle'} />
-          <SocialLink brand={'LinkedIn'} />
-          <SocialLink brand={'Twitter'} />
+          <SocialLink brand={'Envelope'} href='mailto:matt@mattramotar.com' />
+          <SocialLink brand={'GithubCircle'} href='https://github.com/matt-ramotar' />
+          <SocialLink brand={'LinkedIn'} href='https://www.linkedin.com/in/matt-ramotar' />
+          <SocialLink brand={'Twitter'} href='https://twitter.com/mattramotar' />
         </SocialProvider>
       </Box>
 
