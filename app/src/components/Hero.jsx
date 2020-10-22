@@ -4,6 +4,9 @@ import hero from '../sf.jpeg';
 import headshot from '../0.jpeg';
 import { useSelector } from 'react-redux';
 import { Typography, Box, Paper, List, ListItem } from '@material-ui/core';
+import PlaceIcon from '@material-ui/icons/Place';
+import PhoneIcon from '@material-ui/icons/Phone';
+import EmailIcon from '@material-ui/icons/Email';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -65,8 +68,21 @@ export default function Hero() {
       />
       <Paper className={classes.contact}>
         <Typography variant='h4'>{`${contact.nickname} ${contact.last}`}</Typography>
-        <Typography variant='h6'>{contact.email}</Typography>
-        <Typography variant='h6'>{contact.phone}</Typography>
+
+        <Box style={{ display: 'flex', flexDirection: 'row' }}>
+          <EmailIcon />
+          <Typography variant='h6'>{contact.email}</Typography>
+        </Box>
+
+        <Box style={{ display: 'flex', flexDirection: 'row' }}>
+          <PhoneIcon />
+          <Typography variant='h6'>{contact.phone}</Typography>
+        </Box>
+
+        <Box style={{ display: 'flex', flexDirection: 'row' }}>
+          <PlaceIcon />
+          <Typography variant='h6'>{`${contact.city}, ${contact.state}`}</Typography>
+        </Box>
       </Paper>
       <Paper className={classes.about}>
         <Typography variant='h3'>Hey! 👋</Typography>
