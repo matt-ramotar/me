@@ -29,7 +29,7 @@ const useStyles = makeStyles(theme => ({
   },
   about: {
     position: 'absolute',
-    top: 460,
+    top: 410,
     left: '33%',
     width: '45%',
     'margin-left': '5%',
