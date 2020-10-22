@@ -41,9 +41,9 @@ const useStyles = makeStyles(theme => ({
     left: '16.67%',
     'margin-right': '5%',
   },
-  // listItem: {
-  //   fontSize: '22px',
-  // },
+  emoji: {
+    fontSize: '22px',
+  },
 }));
 
 export default function Hero() {
@@ -88,13 +88,22 @@ export default function Hero() {
         <Typography variant='h3'>Hey! 👋</Typography>
         <Typography variant='h5'>Thoughtful and upbeat full stack engineer with SERN and MERN experience.</Typography>
         <List>
-          <ListItem className={classes.listItem}>🌱 Currently working on Mighty and Paw Trails </ListItem>
+          <ListItem className={classes.listItem}>
+            <span className={classes.emoji}>🌱</span> Currently working on Mighty and Paw Trails{' '}
+          </ListItem>
 
           <ListItem className={classes.listItem}>
-            🧰 Previously worked in healthcare research-consulting. In college I studied economics, biology, philosophy
+            <span className={classes.emoji}>🧰</span> Previously worked in healthcare research-consulting. In college I
+            studied economics, biology, philosophy
           </ListItem>
-          <ListItem className={classes.listItem}>❤️ Enjoy 🏃🏽‍♂️ running, 🥾 hiking, 🎿 skiing, 🎾 tennis</ListItem>
-          <ListItem className={classes.listItem}>🐕‍🦺 Best friend of a 2-year-old Golden Retriever named Tag!</ListItem>
+          <ListItem className={classes.listItem}>
+            <span className={classes.emoji}>❤️</span> Enjoy <span className={classes.emoji}>🏃🏽‍♂️</span> running,{' '}
+            <span className={classes.emoji}>🥾</span> hiking, <span className={classes.emoji}>🎿</span> skiing,{' '}
+            <span className={classes.emoji}>🎾</span> tennis
+          </ListItem>
+          <ListItem className={classes.listItem}>
+            <span className={classes.emoji}>🐕‍🦺</span> Best friend of a 2-year-old Golden Retriever named Tag!
+          </ListItem>
         </List>
       </Paper>
     </Box>
