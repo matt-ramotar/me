@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Route, Switch } from 'react-router-dom';
 import Hero from '../components/Hero';
+import Footer from '../components/Footer';
 import AboutView from './AboutView';
 import ContactView from './ContactView';
 import ProjectsViewContainer from './ProjectsView';
@@ -37,7 +38,6 @@ export function Views({ getLinksDispatcher, getSkillsDispatcher, getContactDispa
       <Hero />
       <Box className={classes.blm} />
       <ProjectsViewContainer />
-      <ContactView />
     </>
   );
 }
